@@ -13,10 +13,13 @@ export interface Row {
 
 export class DataManipulator {
   static generateRow(serverResponds: ServerRespond[]): Row {
+
+    //This creats price abc and def with the help of an array that gets the top ask price and top bid price to calculate the average.
     const priceABC = (serverResponds[0].top_ask.price + serverResponds[0].top_bid.price)/2;
     const priceDEF = (serverResponds[1].top_ask.price + serverResponds[1].top_bid.price)/2;
     const ratio = priceABC/priceDEF;
     
+    //Sets the upper and lower limits I played around to see how the results would change.
     const upperBound = 1 + 0.03;
     const lowerBound = 1 - 0.04;
 
